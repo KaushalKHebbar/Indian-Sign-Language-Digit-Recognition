@@ -33,7 +33,7 @@ Next, a B/W mask is created for the hand as shwon below.<br>
 ![BWmask](Images/bwmask.png)<br>
 
 Finally, the frame is enhanced further to remove sharp edges and other discontinuties using the process of "Dialation" and "Smoothening". <br>
-![BWmaskenhanced](Images/bwmenchanced.png) 
+![BWmaskenhanced](Images/bwenhanced.png) 
 
 
 ## 2. Feature Extraction
