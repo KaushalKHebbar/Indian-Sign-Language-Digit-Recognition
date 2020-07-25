@@ -62,7 +62,7 @@ We see that this ratio is essentially greater for the gesture ‘1’ than for t
 
 Some of the final results are as shown below.<br>
 ![0_bw](Images/0bw.png)<br>
-![0](Images/0bw.png)<br>
+![0](Images/0.png)<br>
 ![3_bw](Images/3bw.png)<br>
 ![3](Images/3.png)<br>
 
