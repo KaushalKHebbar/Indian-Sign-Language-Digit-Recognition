@@ -23,24 +23,29 @@ The project implementation can be divided into 3 major steps.
 
 ## 1. Data Preprocessing
 
-A region of reference with a rectangular boundary is created as shown in the figure. 
-![roi](Images/roi.png)
-The user is required to place his hand inside this region as the further processing is applied only to this frame of reference. The frame is first converted from BGR to HSV color range. The HSV values are ajusted such that only the hand skin color is detected as shwon below. 
-![hsvimage](Images/hsv.png)
-Next, a B/W mask is created for the hand as shwon below.
-![BWmask](Images/bwmask.png)
-Finally, the frame is enhanced further to remove sharp edges and other discontinuties using the process of "Dialation" and "Smoothening". 
-![BWmaskenhanced](Images/bwmenchanced.png)
+A region of reference with a rectangular boundary is created as shown in the figure.<br> 
+![roi](Images/roi.png)<br>
+
+The user is required to place his hand inside this region as the further processing is applied only to this frame of reference. The frame is first converted from BGR to HSV color range. The HSV values are ajusted such that only the hand skin color is detected as shwon below.<br>
+![hsvimage](Images/hsv.png)<br>
+
+Next, a B/W mask is created for the hand as shwon below.<br> 
+![BWmask](Images/bwmask.png)<br>
+
+Finally, the frame is enhanced further to remove sharp edges and other discontinuties using the process of "Dialation" and "Smoothening". <br>
+![BWmaskenhanced](Images/bwmenchanced.png) 
 
 
 ## 2. Feature Extraction
 
-Certain mathematical functions are applied on the so obtained masked image in order to classify them into different classes from 0-5 digits. Firstly, a contour is drawn on the image of the palm (drawn in blue in the below image).   
-![contour](Images/contour.png)
-Next, a convex hull is drawn around the hand. It simply connects all the outermost points of the masked images and is shown in red color in the image below..  
-![convex_hull](Omages/convexhull.png)
-A function is used to obtain the coordinates of the end points of each of the defect present between ie., the defect between 2 fingers. The farthest point is calculated by the Euler’s formula. Using this, by cosine rule we find the angle between each of the defects and the contours. The angles are as shown in the image below as black lines. 
-![angles](Images/angles.png)
+Certain mathematical functions are applied on the so obtained masked image in order to classify them into different classes from 0-5 digits. Firstly, a contour is drawn on the image of the palm (drawn in blue in the below image).<br>
+![contour](Images/contour.png)<br>
+
+Next, a convex hull is drawn around the hand. It simply connects all the outermost points of the masked images and is shown in red color in the image below.<br>
+![convex_hull](Images/convex_hull.png)<br>
+
+A function is used to obtain the coordinates of the end points of each of the defect present between ie., the defect between 2 fingers. The farthest point is calculated by the Euler’s formula. Using this, by cosine rule we find the angle between each of the defects and the contours. The angles are as shown in the image below as black lines.<br> 
+![angles](Images/angle.png)
 
 ## 3. Real time classification/Algorithm
 
@@ -49,17 +54,17 @@ The classification happens based on the features extracted. The algorithm works 
 -	Each time an angle falls in this range, a counter is incremented by 1.
 -	The final counter is incremented by 1 as the gesture made is 1+counter value.
 -	The output is then displayed as a readable text on the top of the real time video frame.   
-The above algorithm fails to identify the gestures for digit ‘0’ and ‘1’ since both have no defects in them. To overcome this issue, we extract additional features like the ratio of area between the contour and hull to that of contour. i.e.//
+The above algorithm fails to identify the gestures for digit ‘0’ and ‘1’ since both have no defects in them. To overcome this issue, we extract additional features like the ratio of area between the contour and hull to that of contour. i.e.<br>
 
-Area ratio = (Area of hull – Area of contour) / (Area of contour)//
+Area ratio = (Area of hull – Area of contour) / (Area of contour)<br>
   
-We see that this ratio is essentially greater for the gesture ‘1’ than for that of the gesture ‘0’. Thus, by assigning a threshold we are able to classify the gesture correctly as shown.  
-//
-Some of the final results are as shown below.
-![0_bw](Images/0bw.png)
-![0](Images/0bw.png)
-![3_bw](Images/3bw.png)
-![3](Images/3.png)
+We see that this ratio is essentially greater for the gesture ‘1’ than for that of the gesture ‘0’. Thus, by assigning a threshold we are able to classify the gesture correctly as shown.<br>
+
+Some of the final results are as shown below.<br>
+![0_bw](Images/0bw.png)<br>
+![0](Images/0bw.png)<br>
+![3_bw](Images/3bw.png)<br>
+![3](Images/3.png)<br>
 
 
 
